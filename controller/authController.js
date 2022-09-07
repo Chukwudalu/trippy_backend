@@ -48,7 +48,7 @@ exports.signup = catchAsync(async (req, res, next) => {
         role: req.body.role || undefined
     });
     // const url = `${req.protocol}://${req.get('host')}/profile/me`;
-    const url = `${req.protocol}://127.0.0.1:3000/profile/me`;
+    const url = `${process.env.CLIENT_URL}/profile/me`;
     await new Email(newUser, url).sendWelcome()
 
     createSendToken(newUser, 201, res)
@@ -173,7 +173,7 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
 
     // 3) Send it back as an email
     try{
-        const resetURL = `${req.protocol}://127.0.0.1:3000/resetPassword/${resetToken}`;
+        const resetURL = `${process.env.CLIENT_URL}/resetPassword/${resetToken}`;
         await new Email(user, resetURL).sendPasswordReset()
         
         res.status(200).json({

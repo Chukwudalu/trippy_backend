@@ -161,7 +161,6 @@ exports.getToursWithin = async (req, res, next) => {
     if(!lat || !lng) next(new AppError('Please provide latitude and longitude in the format lat,lng', 400))
 
     const tours = await Tour.find({ startLocation: { $geoWithin: { $centerSphere: [[lng, lat], radius]}}})
-    console.log(distance, lat, lng, unit)
 
     res.status(200).json({
         status: 'success',

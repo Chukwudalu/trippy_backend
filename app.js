@@ -7,6 +7,7 @@ const xss = require('xss-clean')
 const hpp = require('hpp')
 const cors = require('cors')
 const cookieParser = require('cookie-parser')
+const comression = require('compression')
 
 const AppError = require('./utils/appError')
 const globalErrorHandler = require('./controller/errorController')
@@ -15,7 +16,8 @@ const tourRouter = require('./routes/tourRoutes')
 const userRouter = require('./routes/userRoutes')
 const reviewRouter = require('./routes/reviewRoutes');
 const bookingRouter = require('./routes/bookingRoutes')
-const tourSlugRouter = require('./routes/tourSlugRoute')
+const tourSlugRouter = require('./routes/tourSlugRoute');
+const compression = require('compression');
 
 const app = express();
 // 1) Middlewares
@@ -61,6 +63,8 @@ app.use(hpp({
 }))
 
 // app.use(express.static(`${__dirname}/public`))
+
+app.use(compression())
 
 // Test middleware
 
