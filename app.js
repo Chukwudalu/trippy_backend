@@ -1,5 +1,6 @@
 const express = require('express');
 const morgan = require('morgan');
+const path = require('path')
 const rateLimit = require('express-rate-limit')
 const helmet = require('helmet')
 const mongoSanitize = require('express-mongo-sanitize')
@@ -8,6 +9,7 @@ const hpp = require('hpp')
 const cors = require('cors')
 const cookieParser = require('cookie-parser')
 const comression = require('compression')
+
 
 const AppError = require('./utils/appError')
 const globalErrorHandler = require('./controller/errorController')
@@ -19,7 +21,19 @@ const bookingRouter = require('./routes/bookingRoutes')
 const tourSlugRouter = require('./routes/tourSlugRoute');
 const compression = require('compression');
 
+
+
 const app = express();
+__dirname = path.resolve();
+if(process.env.NODE_ENV === 'production'){
+    app.use(express.static(path.join(__dirname + "/public")));
+
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'public', 'index.html'))
+    })
+}
+
+
 // 1) Middlewares
 const corsConfig = {
     origin: true,
