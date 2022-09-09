@@ -4,9 +4,9 @@ const authController = require('../controller/authController')
 
 const router = express.Router();
 
-router.get('/checkout-session/:tourId', authController.protect, bookingController.getCheckoutSession)
+router.post('/checkout-session/:tourId', authController.protect, bookingController.getCheckoutSession)
 router.post('/create-booking-checkout', bookingController.createBookingCheckout)
-router.get('/my-tours', authController.protect, bookingController.getMyTours)
+router.post('/my-tours', authController.protect, bookingController.getMyTours)
 
 
 module.exports = router;

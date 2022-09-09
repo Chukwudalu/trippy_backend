@@ -13,7 +13,7 @@ const router = express.Router();
 router.use('/:tourId/reviews', reviewRouter)
 // router.use(authController.isLoggedIn)
 // router.param('id', tourController.checkID);
-router.route('/liked-tours').get(authController.protect, tourController.getTourLikeCount)
+router.route('/liked-tours').post(authController.protect, tourController.getTourLikeCount)
 router.route('/top-5-cheap').get(tourController.aliasTopTours, tourController.getAllTours)
 
 router.route('/tour-stats').get(tourController.getTourStats)
