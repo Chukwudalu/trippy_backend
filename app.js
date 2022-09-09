@@ -39,6 +39,7 @@ const corsConfig = {
     origin: true,
     credentials: true,
 };
+app.set("trust proxy", 1)
 app.use(cors(corsConfig))
 app.options('*', cors(corsConfig));
 // set Security http headers
