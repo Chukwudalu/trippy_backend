@@ -15,9 +15,9 @@ const imageKit = new ImageKit({
 })
 
 const multerStorage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, 'public/img/users');
-    },
+    // destination: (req, file, cb) => {
+    //     cb(null, 'public/img/users');
+    // },
     filename: (req, file, cb) => {
         const ext = file.mimetype.split('/')[1];
         cb(null, `user-${req.user.id}-${Date.now()}.${ext}`)
@@ -66,7 +66,8 @@ exports.getMe = (req, res, next) => {
     next()
 }
 
-exports.updateMe = catchAsync ( async(req, res, next) => {
+exports.updateMe = catchAsync (async(req, res, next) => {
+    
     let filteredBody, updatedUser;
     // 1) Create error if user POSTs password data
     if(req.body.password || req.body.passwordConfirm){
