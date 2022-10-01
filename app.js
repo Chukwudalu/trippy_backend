@@ -29,7 +29,7 @@ const app = express();
 // 1) Middlewares
 
 const corsConfig = {
-    origin: ['https://trippy1.netlify.app', 'https://ik.imagekit.io'],
+    origin: 'https://trippy1.netlify.app',
     credentials: true
 };
 // app.set("trust proxy", 1)

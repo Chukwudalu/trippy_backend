@@ -2,6 +2,7 @@ const express = require('express')
 
 const userController = require('../controller/userController');
 const authController = require('../controller/authController')
+const cors = require('cors')
 
 
 
@@ -20,7 +21,7 @@ router.use(authController.protect)
 router.patch('/updatePassword', authController.updatePassword);
 
 router.post('/me', userController.getMe, userController.getUser)
-router.patch('/updateMe', userController.uploadUserPhoto, userController.updateMe)
+router.patch('/updateMe', cors() ,userController.uploadUserPhoto, userController.updateMe)
 router.delete('/deleteMe', userController.deleteMe)
 
 router.use(authController.restrictTo('admin'))
