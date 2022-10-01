@@ -24,15 +24,8 @@ const compression = require('compression');
 
 
 const app = express();
-// app.enable('trust proxy');
-// __dirname = path.resolve();
-// if(process.env.NODE_ENV === 'production'){
-//     app.use(express.static(path.join(__dirname + "/public")));
+app.enable('trust proxy');
 
-//     app.get('*', (req, res) => {
-//         res.sendFile(path.resolve(__dirname, 'public', 'index.html'))
-//     })
-// }
 
 
 // 1) Middlewares
@@ -40,7 +33,7 @@ const corsConfig = {
     origin: true,
     credentials: true
 };
-app.set("trust proxy", 1)
+// app.set("trust proxy", 1)
 app.use(cors(corsConfig))
 app.options('*', cors(corsConfig));
 // set Security http headers
