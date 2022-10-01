@@ -35,6 +35,11 @@ const corsConfig = {
 app.use(cors(corsConfig))
 app.options('*', cors(corsConfig));
 
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    next();
+});
+
 // set Security http headers
 app.use(helmet())
 
