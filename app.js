@@ -26,6 +26,11 @@ const compression = require('compression');
 const app = express();
 app.enable('trust proxy');
 
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', 'https://trippy1.netlify.app');
+    next();
+});
+
 // 1) Middlewares
 const corsConfig = {
     origin: true,
@@ -34,6 +39,7 @@ const corsConfig = {
 // app.set("trust proxy", 1)
 app.use(cors(corsConfig))
 app.options('*', cors(corsConfig));
+
 
 
 // set Security http headers
