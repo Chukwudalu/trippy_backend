@@ -26,16 +26,29 @@ const compression = require('compression');
 const app = express();
 app.enable('trust proxy');
 
-
-
 // 1) Middlewares
-const corsConfig = {
-    origin: true,
-    credentials: true
-};
-// app.set("trust proxy", 1)
-app.use(cors(corsConfig))
-app.options('*', cors(corsConfig));
+// const corsConfig = {
+//     origin: true,
+//     credentials: true
+// };
+// // app.set("trust proxy", 1)
+// app.use(cors(corsConfig))
+// app.options('*', cors(corsConfig));
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*")
+    res.header(
+      "Access-Control-Allow-Headers",
+      "Origin, X-Requested, Content-Type, Accept Authorization"
+    )
+    if (req.method === "OPTIONS") {
+      res.header(
+        "Access-Control-Allow-Methods",
+        "POST, PUT, PATCH, GET, DELETE"
+      )
+      return res.status(200).json({})
+    }
+    next()
+})
 // set Security http headers
 app.use(helmet())
 
