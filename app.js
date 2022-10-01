@@ -30,7 +30,7 @@ app.enable('trust proxy');
 
 // 1) Middlewares
 const corsConfig = {
-    origin: '*',
+    origin: true,
     credentials: true
 };
 // app.set("trust proxy", 1)
