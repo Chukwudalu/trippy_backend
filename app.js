@@ -27,6 +27,11 @@ const app = express();
 app.enable('trust proxy');
 
 // 1) Middlewares
+app.all('/', function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "https://trippy1.netlify.app");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    next()
+});
 const corsConfig = {
     origin: true,
     credentials: true
@@ -35,11 +40,7 @@ const corsConfig = {
 app.use(cors(corsConfig))
 app.options('*', cors(corsConfig));
 
-app.all('/', function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "X-Requested-With");
-    next()
-});
+
 
 // set Security http headers
 app.use(helmet())
