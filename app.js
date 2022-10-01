@@ -30,7 +30,7 @@ app.enable('trust proxy');
 
 // 1) Middlewares
 const corsConfig = {
-    origin: true,
+    origin: ['https://trippy1.netlify.app/', 'http://localhost:3000'],
     credentials: true
 };
 // app.set("trust proxy", 1)
