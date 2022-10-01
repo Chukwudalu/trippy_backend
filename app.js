@@ -35,7 +35,7 @@ app.enable('trust proxy');
 // app.use(cors(corsConfig))
 // app.options('*', cors(corsConfig));
 app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*")
+    res.header("Access-Control-Allow-Origin", "https://trippy1.netlify.app/")
     res.header(
       "Access-Control-Allow-Headers",
       "Origin, X-Requested, Content-Type, Accept Authorization"
