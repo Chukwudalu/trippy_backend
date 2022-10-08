@@ -39,7 +39,6 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
         status: 'success',
         session
     })
-
 })
 
 exports.createBookingCheckout = catchAsync(async (req, res, next) => {
@@ -65,3 +64,6 @@ exports.getMyTours = catchAsync(async (req, res, next) => {
         tours
     })
 })
+
+
+

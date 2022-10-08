@@ -27,9 +27,9 @@ const app = express();
 
 
 // 1) Middlewares
-
+// origin: 'https://trippy1.netlify.app',
 const corsConfig = {
-    origin: 'https://trippy1.netlify.app',
+    origin: true,
     credentials: true
 };
 // app.set("trust proxy", 1)
