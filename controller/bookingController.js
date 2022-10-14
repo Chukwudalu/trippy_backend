@@ -53,6 +53,7 @@ exports.createBookingCheckout = catchAsync(async (req, res, next) => {
 })
 
 exports.getMyTours = catchAsync(async (req, res, next) => {
+    
     // 1) Find all bookings
     const bookings = await Booking.find({ user: req.user._id})
    

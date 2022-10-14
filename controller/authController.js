@@ -90,7 +90,7 @@ exports.protect = catchAsync( async (req, res, next) => {
     
     // 1) Getting token and check if it exist
     let token;
-    if(req.headers.authorization && req.headers.authorization.startsWith('Bearer')){
+    if(req.headers?.authorization && req.headers.authorization.startsWith('Bearer')){
         token = req.headers.authorization.split(' ')[1];
     }else if(req.cookies.jwt){
         token = req.cookies.jwt
